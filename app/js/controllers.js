@@ -23,10 +23,8 @@
 			vm.getTodos = function() {
 				todoService.get()
 					.then(function(response) {							//console.log('success!');	console.log(response);
-							vm.todos = response;
-					}, function(reason) {
-							console.log('error '+ reason);
-					})
+							return vm.todos = response;
+					}).catch(console.log.bind(console));
 			}
 
 			vm.addTodo = function() {
@@ -41,9 +39,9 @@
 			vm.update = function() {
 				todoService.update(vm.todos)
 					.then(function(response) {						//console.log('success!');	console.log(response);
-						vm.newTodo = '';
-					}, function(reason) {
-						console.log('error '+ reason);
+						return vm.newTodo = '';
+					}).catch(function(err) {
+						throw new Error(err);	// or console.log(err);
 					});
 			}
 
