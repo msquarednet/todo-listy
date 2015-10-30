@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="todoListy">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Todo Listy</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/stylesheet.css">
+  </head>
+  <body ng-controller="TodoController as vm">
+    
+    <h1 ng-bind="vm.foo"></h1>
+
+		<section ng-cloak>
+		  <div class="checkbox" ng-repeat="t in vm.todos track by $index">
+		    <label>
+		      <input type="checkbox" ng-model="t.completed" ng-checked="t.completed" ng-click="vm.update()"> {{t.title}} <!-- : {{t.completed}} -->
+		    </label>
+		  </div>			
+		</section>
+
+		<hr>
+
+		<form name="theform" ng-submit="vm.addTodo()" ng-cloak>
+		  <div class="form-group">
+		    <label>Create New Todo
+			    <input type="text" id="newTodo" class="form-control" ng-model="vm.newTodo" placeholder="What needs to be done?">
+		  	</label>
+		  </div>
+		  <!-- <button type="submit" class="btn btn-default">Submit</button>-->		
+		</form>		
+
+		<br><br>
+		<pre>{{vm.todos}}</pre>
+		<pre>{{vm.newTodo}}</pre>
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+		<script src="js/angular.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>    
+		<script src="js/services.js"></script>    
+  </body>
+</html>
